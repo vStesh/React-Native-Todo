@@ -44,7 +44,7 @@ export const MainScreen = () => {
     }
 
     let content = (
-        <View style={{ width: deviceWidth }}>
+        <View style={{ width: deviceWidth, height: '90%' }}>
             <FlatList
                 keyExtractor={item => item.id}
                 data={todos}

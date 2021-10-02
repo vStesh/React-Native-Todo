@@ -74,12 +74,19 @@ export const TodoState = ({children}) => {
         showLoader();
         clearError();
         try {
-            const data = await Http.get(DB_URL + 'todo.json');
+            const data = await Http.get(DB_URL + 'todos.json');
+            // const data = await Http.get('https://rn-todo-app-f0911-default-rtdb.europe-west1.firebasedatabase.app/todos.json');
             if(data) {
                 console.log('Fetch Data: ', data);
                 const todos = Object.keys(data).map(key => ({...data[key], id: key}));
                 dispatch({type: FETCH_TODOS, todos});
             }
+            // const response = await fetch('https://rn-todo-app-f0911-default-rtdb.europe-west1.firebasedatabase.app/todos.json', {
+            //     method: "GET",
+            //     headers: {'Content-Type': 'application/json'}
+            // });
+            // const data = response.json();
+            // console.log(data);
         } catch (e) {
             showError();
             console.log(e);
